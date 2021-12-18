@@ -1,0 +1,111 @@
+<html lang="en">
+{% extends 'admin_page.html' %}
+<head>
+    
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Slots</title>
+</head>
+<body>
+    {% block content %}
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800"> Rented Parking Slot Details</h1>
+            
+        </div>
+        
+
+        <!-- Content Row -->
+        <div class="row">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Parking Slot Table</h6>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Sl.No</th>
+                                    <th>Parking Name</th>
+                                    <th>Location</th>
+                                    <th>Total Slots Available</th>
+                                    <th>Customer Name </th>
+                                    <th>Customer NUmber</th>
+                                    
+                                    
+                                </tr>
+                            </thead>
+                            
+                            <tbody>
+                                {% for x in slot_details %}
+                                <tr>
+                                   
+                                    <td>{{forloop.counter|add:0}}</td>
+                                    <td>{{x.spot_name}}</td>
+                                    <td>{{x.customer_location}}</td>
+                                    <td>{{x.total_slots_available}}</td>
+                                    <td>{{x.customer_name}}</td>
+                                    <td> {{x.customer_number}}</td>
+                                    
+                                    
+                                   
+                                </tr>
+                                
+                               {% endfor %}
+                                
+                               
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+
+
+
+            
+            
+
+            
+
+           
+        </div>
+
+        
+
+       
+
+    </div>
+    
+
+    {% endblock %}
+
+    
+
+   
+    
+</body>
+</html>

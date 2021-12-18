@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  {% load static %}
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+
+    <title>Signin </title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../../../dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="{%static "css/signin.css"%}"" rel="stylesheet">
+    
+  </head>
+
+<body class="text-center" style="background-image: url(static/images/background_home.jpg);">
+
+  
+ 
+    
+      <div class="split left">
+        
+        <div class="centered"> 
+      
+      <form class="form-signin" method="POST">
+        {% csrf_token %}
+        
+        <h1 class="h3 mb-3 font-weight-normal" style=" color: white;"><b>Please Sign in</b></h1>
+        <label for="input" class="sr-only">Username</label>
+        <input type="text" id="inputEmail" class="form-control" placeholder="Username" name="username" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
+      <div style="margin-top: 30px;"><button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button></div>
+
+      
+        
+        
+      </form>
+    </div>
+    
+  </div>
+
+  <H1 style="color:rgb(12, 11, 11);font-weight:500; font-size:50px;"><p> OR </p></H1>
+
+  <div class="split right">
+    <div class="centered"> 
+
+      <div id="booking" class="section" >
+        <div class="section-center">
+          <div class="container" id="container">
+            <div class="row" id="inner">
+              
+              <div class="col-sm-6" >
+                <div class="card"style="width: 18rem; right:100px;" >
+                <div class="card-body" >
+                  <center>
+                    
+                    <img src="{% static "images/signin_thumbnails.jpg"%}" style="width:50px;  " >
+                    <p class="card-text" >Register as User </p>
+                      <a href="{% url 'user_registration'%}" class="btn btn-success">Register </a>
+                  </center>
+                  
+                  
+                </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="card" style="width: 18rem;">
+                <div class="card-body" >
+                  <center>
+                    <img src="{% static "images/signin_thumbnails.jpg"%}"" style="width:50px; " >
+                    <p class="card-text" >Register as Employee</p>
+                      <a href="{% url 'employee_registration' %}" class="btn btn-success">Register </a>
+                  </center>
+                  
+                  
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+  </div>
+
+
+</body>
+</html>

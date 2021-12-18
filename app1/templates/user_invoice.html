@@ -1,0 +1,64 @@
+
+<!doctype html>
+<html>
+<head>
+  {% load static %}
+  
+<meta charset="utf-8">
+
+<title>Invoice</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+<!-- Google fonts-->
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+<link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+<link type="text/css" rel="stylesheet" href="{% static "css/invoice.css"%}"" />
+  <style>
+    @page { size: a6 landscape; }
+  </style>  
+
+
+</head>
+
+<body>
+  
+<div class="invoice-box">
+    <header class="clearfix">
+      <div class="brand-icon  navbar-brand js-scroll-trigger" >
+        
+        <td class="title">
+          
+          
+          <h1 class="navbar-brand js-scroll-trigger" href="#page-top" style="font-size: 25px; margin-top:20px; margin-left:20px;"><img src="https://cdn.onlinewebfonts.com/svg/img_553938.png" style="width:50px; margin-right:30px; margin-top:20px; ">Park It </h1>
+      </td>
+        
+      </div>
+        
+        
+      
+        <center><h2>INVOICE </h2></center>
+        <div style="margin-top:10px ; margin-left:30px;">
+          <h4><span>Date :</span>  {% now "d/m/o "  %}</h4></div>
+        
+        <div id="project" >
+          {% for x in slot_details %}
+          
+          <div style="margin-top:10px ; margin-left:150px;"><h4 class="lead" style="font-size: 20px;"><span>Slot Name :</span>{{x.slot_name}}</h4> </div>
+          
+          <div style="margin-top:10px ; margin-left:150px;"><h4 class="lead" style="font-size: 20px;"><span>price :</span>{{x.price}}</h4></div>
+          <div style="margin-top:10px ; margin-left:150px;"><h4 class="lead" style="font-size: 20px;"><span>Vehicle No :</span> {{x.vehicle_number}}</h4></div>
+          
+          {% endfor %}
+        
+          
+          
+        </div>
+      </header>
+    
+    
+</div>
+</body>
+</html>
+
+

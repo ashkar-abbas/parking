@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up </title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="{% static "fonts/material-icon/css/material-design-iconic-font.min.css"%}"">
+    
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="{% static "css/style.css"%}"">
+</head>
+<body>
+
+    <div class="main">
+        <div class="container">
+            <div class="signup-content">
+                <div class="signup-img">
+                    <img src="{% static "images/users.png"%}""  style="height : 50%;  margin-top:70px; "alt="">
+                </div>
+                <div class="signup-form">
+                    <form method="POST" class="register-form" id="register-form">
+                        {% csrf_token %}
+                        <div class="input-group">
+                            {% if messages %}
+                                <ul class="messages">
+                                    {% for message in messages %}
+                                        <li >
+                                            <div style="color: red; font-size:25px;">
+                        
+                                                {{ message }}
+                                            </div>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                            </div>
+                        <h2>User Registration Form</h2>
+                        
+                        <div class="form-group">
+                            <label for="name">Name :</label>
+                            <input type="text" name="name" id="name"  required>
+                        </div>
+                        
+                        
+                       
+                        <div class="form-group">
+                            <label for="phone">Phone :</label>
+                            <input type="text" id="phone_number" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="username">Username :</label>
+                            <input type="text" id="username" name="username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password :</label>
+                            <input type="password" id="password" name="password" required>
+                        </div>
+                        
+                        
+                        <div class="form-submit">
+                            <a href="{% url 'sign_in_page' %}"><input type="button" value="Back" class="submit" name="reset" id="reset" /></a>
+                            <input type="submit"  value="Submit Form" class="submit" name="submit" id="submit" />
+                        </div>
+                        
+                    </form>
+                   
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+    <!-- JS -->
+    <script src="{% static "vendor/jquery/jquery.min.js"%}""></script>
+    <script src="{% static "js/main.js"%}""></script>
+    <script>
+        $('form').submit( function(){
+           
+            var number=$('#phone_number').val();
+            
+            var passwd=$('#password').val();
+            var name=$('#username').val();
+            var entry_name=$('#name').val();
+            //var filter="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$";
+            //pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/"
+            
+            if(!isNaN(entry_name) || entry_name.length< 5 )
+            {
+                alert("entered name is not valid. minimum 5 character should be their or you have entered digits which is not valid.");
+                return false;
+            }
+
+
+            if (isNaN(number)) 
+            {
+              alert("enter a valid phone number");
+              return false;
+            }
+
+           
+            if (number.length == 7  )
+            {
+                alert("enter the area code also");
+                return false;
+            }
+
+            
+           
+            
+            if (number.length > 11  )
+            {
+                alert("enter a valid mobile number.");
+                return false;
+            }
+
+            if(!isNaN(name) || name.length< 5 )
+            {
+                alert("entered username is not valid. minimum 5 character should be their or you have entered digits which is not valid.")
+                return false;
+            }
+            
+            if( passwd.length < 5 )
+            {
+                alert("the password should be atleast 5 characters or numbers.");
+                return false;
+            }
+
+            
+
+            
+            
+            
+            
+            
+        });
+        
+        
+    </script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

@@ -1,0 +1,124 @@
+<html lang="en">
+{% extends 'admin_page.html' %}
+<head>
+    
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Attendance</title>
+</head>
+<body>
+    {% block content %}
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800"> Employee Details</h1>
+            
+        </div>
+        
+
+        <!-- Content Row -->
+        <div class="row">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Employee Details</h6>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            <td><select name="choice" id="">
+                                <option > Select </option>
+                                {% for x in slot_details %}
+                                <option > {{x.location_name}} </option>
+                                {% endfor %}
+                                </select>
+                            <button type="submit"   class="btn btn-danger"  style="margin-left: 20px;">View</button> 
+                            </td>
+                                
+                            
+                        </form>
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Sl.No</th>
+                                    <th> Name</th>
+                                    <th>Phone Number</th>
+                                    <th>Work Location</th>
+                                    <th>Attendance</th>
+                                    
+                                    
+                                    
+                                </tr>
+                            </thead>
+                            
+                            <tbody>
+                                {% for x in employee_details %}
+                                <tr>
+                                   
+                                    <td>{{forloop.counter|add:0}}</td>
+                                    <td>{{x.name}}</td>
+                                    <td>{{x.phone}}</td>
+                                    <td>{{x.work_location}}</td>
+                                    <td>{{x.attendance}}</td>
+                                   
+                                    
+                                    
+                                   
+                                </tr>
+                                
+                               {% endfor %}
+                                
+                               
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+
+
+
+            
+            
+
+            
+
+           
+        </div>
+
+        
+
+       
+
+    </div>
+    
+
+    {% endblock %}
+
+    
+
+   
+    
+</body>
+</html>

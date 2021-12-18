@@ -1,0 +1,120 @@
+
+<!doctype html>
+<html>
+<head>
+  {% load static %}
+  
+<meta charset="utf-8">
+
+<title>Invoice</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+<!-- Google fonts-->
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+<link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+<link type="text/css" rel="stylesheet" href="{% static "css/invoice.css"%}"" />
+  <style>
+    @page { size: a6 landscape; }
+  </style>  
+
+
+</head>
+
+<body>
+  
+<div class="invoice-box">
+    <header class="clearfix">
+      <div class="brand-icon  navbar-brand js-scroll-trigger" >
+        <form method="POST" class="customer_details" id="customer_details" >
+          {% csrf_token %}
+        
+        <td class="title">
+          
+          
+          <h1 class="navbar-brand js-scroll-trigger" href="#page-top" style="font-size: 25px; margin-top:20px; margin-left:20px;"><img src="https://cdn.onlinewebfonts.com/svg/img_553938.png" style="width:50px; margin-right:30px; margin-top:20px; ">Park It </h1>
+      </td>
+        
+      </div>
+        
+        
+      
+        <center><h2>INVOICE </h2></center>
+        <div style="margin-top:10px ; margin-left:30px;">
+          <h4><span>Date :</span>  {% now "d/m/o "  %}</h4></div>
+        
+        <div id="project" >
+          {% csrf_token %}
+          <div style="margin-top:10px ; margin-left:150px;"><h4 class="lead" style="font-size: 20px;"><span>Name :<input type='text' name='customer_name' placeholder='name'></h4> </div>
+          
+          <div style="margin-top:10px ; margin-left:150px;"><h4 class="lead" style="font-size: 20px;"><span>Mobile No :</span><input type='text' name='phone_number' placeholder='mob. num' id="phone_number" pattern="[0-9]+"></h4></div>
+          <div style="margin-top:10px ; margin-left:150px;"><h4 class="lead" style="font-size: 20px;"><span>Vehicle No :</span> <input type='text' name="vehicle_number" placeholder='vehicle number' id="vehicle_number"></h4></div>
+          <div style="margin-top:10px ; margin-left:150px;"><h4 class="lead" style="font-size: 20px;"><span>Address :</span><input type='text' name="address" placeholder='address' id="address"></h4> </div>
+          <!--<div style="margin-top:10px ; margin-left:150px;"><h4 class="lead" style="font-size: 20px;"><span>Slot :</span><input type='text' value="{{slot_id}}"> </h4></div>-->
+          
+          <div style="margin-top:10px ; margin-left:150px;"><h4 class="lead" style="font-size: 20px;"><span>card type :<select id="card_type">
+
+          <option label="Credit Card">Credit Card(Latin for "I roll")</option>
+          <option label="Debit Card">Debit Card (Swedish Aeroplane AB)</option></span>  </h4>
+        </select>
+        <div style="margin-top:10px ; margin-left:150px;"><h4 class="lead" style="font-size: 20px;"><span>card number :</span><input type='text' placeholder='card number'> </h4></div>
+        <div style="margin-top:10px ; margin-left:150px;"><h4 class="lead" style="font-size: 20px;"><span>cvv :</span><input type='text' placeholder=''> </h4></div>
+      </span>
+  
+      
+                <div class="form-submit">
+                            <a href="{% url 'book_slot' %}"><input type="submit" value="submit" class="submit" name="submit" id="submit" /></a>
+                            <input type="button"  value="back" class="submit" name="back" id="back" />
+                        </div>
+  
+      <a href="{% url 'book_slot' %}" class="btn btn-warning" style="margin-left:60px;margin-top:30px;"  data-toggle="modal" href="{% url 'book_slot' %}" data-target="#exampleModal"></a>
+  Book
+</button>
+
+<!-- Modal --> 
+    <!-- <script>
+    function myFunction() {
+    alert("Hello!Booking Completed!");
+    } 
+    </script> -->
+    <button class="btn btn-warning" 
+    onclick="dyFunction()" style="margin-left:120px;margin-top:30px;" >cancel</button>
+    <!-- <script>
+    function dyFunction() {
+    alert("Booking Canceled! ");
+    }  
+    </script>        
+ -->
+    </form>
+          
+    
+          
+        </div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Success</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Booking successfull !!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+        <button class="btn btn-secondary" data-dismiss="modal">ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+      </header>
+    
+    
+</div>
+</body>
+</html>
+
+

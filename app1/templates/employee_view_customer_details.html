@@ -1,0 +1,146 @@
+<html lang="en">
+{% load static %}
+<head>
+    
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee</title>
+    <link href="{% static "css/sb-admin-2.min.css"%}"" rel="stylesheet">
+</head>
+<body>
+    
+    
+    <div class="container-fluid" style="margin-left: 30%;">
+
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Customer Details</h1>
+            
+        </div>
+        
+
+        <!-- Content Row -->
+        <div class="row">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <div class="input-group">
+                    <h6 class="m-0 font-weight-bold text-primary">CustomerTable</h6>
+                    <form class="form-inline my-2 my-lg-0" style="margin-left:120px;" method="POST">
+                        {% csrf_token %}
+                        <input class="form-control mr-sm-2" type="search" placeholder="enter customer name" aria-label="Search" name="search_input">
+            
+                    </form>
+                    </div>
+                    
+                </div>
+                <div class="card-body">
+                    <div style="margin-bottom: 10px;">
+                        {% if messages %}
+                            <ul class="messages">
+                                {% for message in messages %}
+                                    <li >
+                                        <div style="color: red; font-size:25px;">
+                    
+                                            {{ message }}
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Sl.No</th>
+                                    <th>Name</th>
+                                    <th>Vehicle Number</th>
+                                    <th>Phone Number</th>
+                                    <th>Slot Name</th>
+                                    <th>price</th>
+                                    
+                                </tr>
+                            </thead>
+                            
+                            <tbody>
+                                {% for x in customer_details %}
+                                <tr>
+                                   
+                                    <td>{{forloop.counter|add:0}}</td>
+                                    <td>{{x.customer_name}}</td>
+                                    <td>{{x.vehicle_number}}
+                                    <td>{{x.phone_number}}</td>
+                                    <td>{{x.slot_name}}</td>
+                                    <td>{{x.price}}</td>
+                                    
+                                   
+                                       
+                                    
+                                </tr>
+                                
+                               {% endfor %}
+                                
+                               
+                            </tbody>
+                        </table>
+                        <a href="{% url 'employee_homepage' %}" class="btn btn-danger" style="margin-left:40%;">Back </a>
+                    </div>
+                </div>
+            </div>
+
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+
+
+
+            
+            
+
+            
+
+           
+        </div>
+
+        
+
+       
+
+    </div>
+    <script>
+        function show_alert()
+        {
+            if(!confirm("Do you really want to remove it?")) 
+            {
+                return false;
+            }
+            
+            this.form.submit();
+        }
+    </script>
+
+    
+
+    
+
+   
+    
+</body>
+</html>

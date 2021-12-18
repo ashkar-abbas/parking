@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+	{% load static %}
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+	<title>Parking Spots</title>
+
+	<!-- Google font -->
+	<link href="https://fonts.googleapis.com/css?family=Poppins:400" rel="stylesheet">
+
+	<!-- Bootstrap -->
+	<!-- CSS only -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+
+	<!-- Custom stlylesheet -->
+	<link type="text/css" rel="stylesheet" href="{% static "css/user_homepage.css"%}"" />
+
+	<link href="{% static "vendor/fontawesome-free/css/all.min.css"%}"" rel="stylesheet" type="text/css">
+	
+	
+
+
+	
+
+</head>
+
+<body>
+	<div id="booking" class="section" style="background-image: url(' static/images/background_home.jpg');">
+		<div class="section-center">
+			<div class="container">
+				<div class="row">
+					{% for x in slot_details %}
+					<div class="col-sm-3">
+						<div class="card" style="width: 18rem; margin-top:15px;" >
+							
+						  <div class="card-body" >
+							<h3 class="card-title">{{x.location_name}}</h3>
+							<ul class="card-text">
+								<li> location : {{x.location}}</li>
+								<li>Total Slots Available : {{x.total_slots_available}}</li>
+								<li>Pricing
+									<ul>
+										<li> Two Wheeler Parking charge : <i class="fas fa-rupee-sign"></i> {{x.two_wheeler_price}}</li>
+										
+										<li> Four Wheeler Parking charge :<i class="fas fa-rupee-sign"></i>  {{x.four_wheeler_price}}</li>
+										
+										
+									</ul>
+								</li>
+								<li>
+									Slots Available
+									<ul>
+										<li> Two Wheeler Parking Slots Available : {{x.two_wheeler_slots}}</li>
+										<li> Four Wheeler Parking Slots Available : {{x.four_wheeler_slots}}</li>
+									</ul>
+								</li>
+
+
+							</ul>
+							
+							<a href="{% url 'select_slot' x.id %}" ><button type="button" class="btn btn-danger">Book</button></a>
+							<a href="{% url 'user_homepage' %}" class="btn btn-warning" style="margin-left: 15px;">Back</a>
+						  </div>
+						</div>
+					</div>
+					
+					{% endfor %}
+					  
+					  
+					 
+					  
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+</html>

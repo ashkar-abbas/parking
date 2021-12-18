@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Colorlib Templates">
+    <meta name="author" content="Colorlib">
+    <meta name="keywords" content="Colorlib Templates">
+
+    <!-- Title Page-->
+    <title>Add Parking Slots</title>
+
+    <!-- Icons font CSS-->
+    <link href="{% static "vendor/mdi-font/css/material-design-iconic-font.min.css"%}"" rel="stylesheet" media="all">
+    <link href="{% static "vendor/font-awesome-4.7/css/font-awesome.min.css"%}"" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+
+    <!-- Vendor CSS-->
+    <link href="{% static "vendor/select2/select2.min.css"%}"" rel="stylesheet" media="all">
+    <link href="{% static "vendor/datepicker/daterangepicker.css"%}"" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="{% static "css/main_registerform.css"%}"" rel="stylesheet" media="all">
+</head>
+
+<body>
+    <div class="page-wrapper bg-blue p-t-100 p-b-100 font-robo">
+        <div class="wrapper wrapper--w680">
+            <div class="card card-1" >
+                <div class="card-heading " style="  background-image: url('static/images/parked-car.jpg') ; width:3000px ;height:460px; "></div>
+                <div class="card-body">
+                    <h2 class="title">Slots Info</h2>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div style="margin-bottom: 10px;">
+                            {% if messages %}
+                                <ul class="messages">
+                                    {% for message in messages %}
+                                        <li >
+                                            <div style="color: red; font-size:25px;">
+                        
+                                                {{ message }}
+                                            </div>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </div>
+                        
+                       
+                        <div class="input-group">
+                            <input class="input--style-1" type="text" placeholder="slot name"  name="slot_name" pattern="[A-Za-z ]{1,32}" title="entered name is not valid."  required>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group" >
+                                    <select class="input--style-1" name="slot_type" width=30% required>
+                                        <option value="bike">Bike</option>
+                                        <option value="car">Car</option>
+                                    </select>
+                                   <!--  <input class="input--style-1" type="text" placeholder="slot type" name="slot_type" pattern="[A-Za-z]{1,32}" title="please  enter a valid type"  required> -->
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <select class="input--style-1" name="status" width=30% required>
+                                        <option value="available">Available</option>
+                                        <option value="not available">Not Available</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group" >
+                                    <input class="input--style-1" type="text" placeholder="price" pattern="[0-9]+" title="please enter number only" name="price"  required  >
+                                </div>
+                            </div>
+                           <!-- <div class="col-2">
+                                <div class="input-group">
+                                    <input class="input--style-1" type="text" placeholder="Total Slots Available" name="two_wheeler_slots" pattern="[0-9]+" title="please enter number only" required>
+                                </div>
+                            </div>-->
+                            
+                        </div>
+                        <!--<div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group" >
+                                    <input class="input--style-1" type="text" placeholder="four wheeler parking charge" name="four_wheeler_parking_charge"  pattern="[0-9]+" title="please enter number only" required>
+                                </div>
+                            </div>-->
+                            <!--<div class="col-2">
+                                <div class="input-group">
+                                    <input class="input--style-1" type="text" placeholder="Total Slots Available" name="four_wheeler_slots" pattern="[0-9]+" title="please enter number only" required>
+                                </div>
+                            </div>
+                            
+                        </div>-->
+                        
+                        <div class="p-t-20">
+                            <button class="btn btn--radius btn--green" type="submit">Add</button>
+                            <a href="{% url 'admin_dashboard' %}"><button class="btn btn--radius btn--green" type="button" style="margin-left:20px;">Back</button></a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Jquery JS-->
+    <script src="{% static "vendor/jquery/jquery.min.js"%}""></script>
+    <!-- Vendor JS-->
+    <script src="{% static "vendor/select2/select2.min.js"%}""></script>
+    <script src="{% static "vendor/datepicker/moment.min.js"%}""></script>
+    <script src="{% static "vendor/datepicker/daterangepicker.js"%}""></script>
+
+    <!-- Main JS-->
+    <script src="{% static "js/global.js"%}""></script>
+   
+
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+</html>
+<!-- end document-->

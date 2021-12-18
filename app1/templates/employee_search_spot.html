@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+	{% load static %}
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+	<title>Search</title>
+
+	<!-- Google font -->
+	<link href="https://fonts.googleapis.com/css?family=Poppins:400" rel="stylesheet">
+
+	<!-- Bootstrap -->
+	<link type="text/css" rel="stylesheet" href="{% static "css/bootstrap.min.css"%}"" />
+
+	<!-- Custom stlylesheet -->
+	<link type="text/css" rel="stylesheet" href="{% static "css/user_homepage.css"%}"" />
+
+	
+
+</head>
+
+<body>
+	<div id="booking" class="section" style="background-image: url(' static/images/background_home.jpg');">
+		<div class="section-center">
+			<div class="container">
+				<div class="row">
+					<div class="booking-form">
+						<div class="booking-form">
+						<form method='POST'>
+							{% csrf_token %}
+							<div class="row no-margin">
+								<div class="col-md-9">
+									<div class="form-group">
+										<span class="form-label">Select Location</span>
+										
+										<select name="input_spot" id="" class="form-control" >
+										<option value=""> Select </option>
+										{% for x in location %}
+										<option value="{{x.work_location}}"> {{x.work_location}}</option>
+										{% endfor %}
+									</select>
+										
+										
+										
+									</div>
+								</div>
+								
+								<div class="col-md-3">
+									<div class="form-btn">
+										<button class="submit-btn" type="submit">Check </button>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+</html>
